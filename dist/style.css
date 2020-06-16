@@ -1,0 +1,74 @@
+html, body {
+    background-color: #7282E0;
+}
+
+#game-section {
+    background-color: #000;
+}
+
+* {
+    cursor: url("assets/crosshair.png") 15 15, auto !important;	
+}
+
+#glcanvas {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#logo {
+    position: fixed;
+    height: 200px;
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+
+.overlay {
+    position: fixed;
+    top: 250px;
+    left: 50%;
+    transform: translate(-50%,0);
+    z-index: 100;
+    width: 500px;
+    height: 500px;
+    max-width: 100vw;
+    
+}
+
+section {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.right {
+    float: right;
+}
+
+.smol {
+    padding: 2px 15px;
+}
+
+.scroll {
+    display: block;
+    overflow-y: scroll;
+    height: 350px;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.top-right {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+}
+
+.hidden {
+    display: none;
+}

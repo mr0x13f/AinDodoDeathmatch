@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+
+        <img src="assets/logo.png" alt="Ain Dodo Deathmatch" id="logo">
+
+        <section id="join-section">
+            <div class="card overlay">
+                <div class="card-body">
+
+                    <h1 class="card-title">Server List</h1>
+
+                    <div class="row scroll">
+                        <ul class="list-group col" id="server-list">
+                            
+                        </ul>
+                    </div>
+
+                    <div class="bottom-left">
+                        <button type="button" class="btn btn-primary" id="host-button" disabled>Host server</button>
+                        <button type="button" class="btn btn-link" id="settings-button">Settings</button>
+                    </div>
+
+                    <button type="button" class="btn btn-link top-right" id="refresh-button" disabled>Refresh</button>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="host-section">
+            <div class="card overlay">
+                <div class="card-body">
+                    <h1 class="card-title">Host Server</h1>
+
+                    <form action="javascript:void(0);" class="col scroll">
+
+                        <div class="form-group">
+                            <label for="server-name">Server name</label>
+                            <input type="text" class="form-control" id="server-name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gamemode">Gamemode</label>
+                            <select id="gamemode" class="form-control" id="gamemode" disabled></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gamemode">Map</label>
+                            <select id="gamemode" class="form-control" disabled>
+                                <option selected>dm_crossfire</option>
+                                <option>Custom...</option>
+                            </select>
+                        </div>
+
+                    </form>
+
+                    <div class="bottom-left">
+                        <button type="button" class="btn btn-primary" id="start-server-button">Start server</button>
+                        <button type="button" class="btn btn-link" id="back-to-server-list-button">Back</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="settings-section">
+            <div class="card overlay">
+                <div class="card-body">
+                    <h1 class="card-title">Settings</h1>
+
+                    <form action="javascript:void(0);" class="col scroll">
+
+                        <div class="form-group">
+                            <label for="player-name">Player name</label>
+                            <input type="text" class="form-control" id="player-name">
+                        </div>
+
+                    </form>
+
+                    <div class="bottom-left">
+                        <button type="button" class="btn btn-primary" id="save-settings-button">Save</input>
+                        <button type="button" class="btn btn-link" id="cancel-settings-button">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="server-section">
+            <div class="card overlay">
+                <div class="card-body">
+                    <h1 class="card-title">Server Running</h1>
+
+                </div>
+            </div> 
+        </section>
+
+        <section id="joining-section">
+            <div class="card overlay">
+                <div class="card-body">
+                    <h1 class="card-title">Joining...</h1>
+
+                    
+
+                </div>
+            </div>
+        </section>
+
+        <section id="game-section">
+            <canvas id="glcanvas"></canvas>
+        </section>
+    </body>
+</html>

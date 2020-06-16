@@ -1,0 +1,4 @@
+.vscode/
+dist/script.js
+server/__pycache__/
+tsc-out/
