@@ -24,7 +24,7 @@ export module GameClient {
         Input.init();
         Renderer.init();
 
-        joiningRace = new Race(6 -1, start); // connectionReady, BrushShader, SpriteShader, initial-geometry, initial-entities, initial-players
+        joiningRace = new Race(6, start); // connectionReady, BrushShader, SpriteShader, initial-geometry, initial-entities, initial-players
 
         _onStart = onStart;
 
@@ -90,7 +90,7 @@ export module GameClient {
     }
 
     NetClient.addNetHook("initial-players", (data:any) => {
-        console.log("Got initial player")
+        console.log("Got initial player data")
         for (let playerData of data) 
             cl_parsePlayerNetCreate(playerData);
         GameClient.joiningRace.increment();

@@ -31,21 +31,12 @@ export module Util {
         ];
     }
 
-    export function mat4FromProjection(w:number, h:number): number[] {
+    export function rotationMatrix(r:number): number[] {
+        let c = Math.cos(r);
+        let s = Math.sin(r);
         return [
-
-        ];
-    }
-
-    export function mat4FromViewTransform(x:number, y:number): number[] {
-        return [
-            
-        ];
-    }
-
-    export function mat4FromTransform(x:number, y:number, w:number, h:number, z:number=0): number[] {
-        return [
-            
+            c,-s,
+            s, c,
         ];
     }
 

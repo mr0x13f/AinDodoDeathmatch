@@ -3,11 +3,13 @@ import { Player } from "../Player";
 import { IControllable } from "../interfaces/IControllable";
 import { Sprite, ISpriteData } from "../../graphics/Sprite";
 import { dt } from "../../GameClient";
+import { Weapon } from "../../Weapon";
 
 const SPRITE:ISpriteData = {
     "texture": "assets/sprites/ain.png",
     "frameW": 96,
     "frameH": 48,
+    "padding": 8,
 
     "animations": {
         "idle": {
@@ -47,8 +49,15 @@ export class Ain extends Entity implements IControllable {
     public player:Player|null = null;
     public isBlastJumping:boolean = false;
 
+    public activeWeapon:Weapon|null = null;
+    public weaponRotation:number = 0;
+    public weaponOffsetX:number = 0;
+    public weaponOffsetY:number = 0;
+
     protected spawn() {
 
+        this.sprite.play("idle", 1, true);
+        
     }
 
     protected update() {
@@ -60,7 +69,10 @@ export class Ain extends Entity implements IControllable {
 
     protected draw() {
 
-        
+        this.sprite.draw(this.x, this.y);
+
+        if (this.activeWeapon)
+            this.activeWeapon.sprite.draw(this.x+this.weaponOffsetX, this.y+this.weaponOffsetY, this.weaponRotation);
 
     }
 

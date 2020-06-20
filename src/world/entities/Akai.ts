@@ -5,6 +5,7 @@ const SPRITE:ISpriteData = {
     "texture": "assets/sprites/akai.png",
     "frameW": 50,
     "frameH": 36,
+    "padding": 1,
 
     "animations": {
         "idle": {
@@ -22,7 +23,7 @@ export class Akai extends Entity {
 
     protected spawn() {
 
-        
+        this.sprite.play("idle", 1, true);
 
     }
 
@@ -32,7 +33,7 @@ export class Akai extends Entity {
 
     protected draw() {
 
-        
+        this.sprite.draw(this.x, this.y);
 
     }
 

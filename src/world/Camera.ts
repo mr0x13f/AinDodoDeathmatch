@@ -23,11 +23,11 @@ export class Camera implements IBoundingBox {
             if (Collision.aabb(brush, this))
                 BrushShader.drawBrush(brush);
         
-        // SpriteShader.use();
-        // SpriteShader.setCamera(this);
+        SpriteShader.use();
+        SpriteShader.setCamera(this);
 
-        // for (let entity of World.entities)
-        //     entity.doDraw();
+        for (let entity of World.entities)
+            entity.doDraw();
 
     }
 

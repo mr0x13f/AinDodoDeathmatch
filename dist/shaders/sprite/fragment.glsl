@@ -1,21 +1,27 @@
-#version 330 core
-uniform sampler2D uTexture;
-uniform vec4 uColor;
-uniform vec2 uFrameSize;
-uniform vec2 uFramePos;
+precision mediump float;
 
-in vec2 vTexCoord;
+struct Sprite {
+    vec2 pos;
+    vec2 size;
+    mat2 rotationMatrix;
+    vec2 alignment;
+    sampler2D texture;
+    vec2 texOffset;
+    vec2 texScale;
+};
 
-out vec4 FragColor;
+uniform Sprite uSprite;
 
-void main()
-{
-    vec2 texCoord = uFramePos + vTexCoord * uFrameSize;
-    vec4 color = texture(uTexture, texCoord) * uColor;
+varying vec2 vTexCoord;
+
+void main() {
+
+    vec4 color = texture2D(uSprite.texture, vTexCoord);
 
     // Discard transparent pixels
     if (color.a < 0.5) discard;
-    color.a = 1;
+    color.a = 1.0;
 
-    FragColor = color;
+    gl_FragColor = color;
+    
 }   

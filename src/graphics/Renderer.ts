@@ -2,6 +2,7 @@ import { Util } from "../Util";
 import { World } from "../world/World";
 import { Input } from "../Input";
 import { BrushShader } from "./shaders/BrushShader";
+import { SpriteShader } from "./shaders/SpriteShader";
 
 export let gl: WebGL2RenderingContext;
 
@@ -31,6 +32,7 @@ export module Renderer {
         };
 
         BrushShader.init();
+        SpriteShader.init();
 
     }
 

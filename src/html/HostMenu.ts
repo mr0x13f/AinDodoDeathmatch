@@ -40,6 +40,8 @@ export module HostMenu {
             option.value = World.GAMEMODES[gm].ID;
             gamemodeSelect.appendChild(option);
         }
+
+        gamemodeSelect.value = "dmc";
     }
 
     function hide() {

@@ -1,32 +1,35 @@
-#version 330 core
-uniform mat4 uModelTransform;
-uniform mat4 uViewTransform;
-uniform mat4 uProjection;
-uniform vec3 uWorldSize;
+precision mediump float;
 
-in vec3 aPos; 
-in vec2 aTexCoord;
+struct Camera {
+    vec2 pos;
+    vec2 scale;
+};
 
-out vec2 vTexCoord;
+struct Sprite {
+    vec2 pos;
+    vec2 size;
+    mat2 rotationMatrix;
+    vec2 alignment;
+    sampler2D texture;
+    vec2 texOffset;
+    vec2 texScale;
+};
 
-void main()
-{
-    vec4 localSpace, viewSpace, clipSpace;
+uniform Camera uCamera;
+uniform Sprite uSprite;
 
-    localSpace = vec4(aPos, 1.0) * vec4(uWorldSize.xy, 0.0, 1.0);
+attribute vec2 aPos; 
+attribute vec2 aTexCoord;
 
-    // Billboard
-    mat4 modelViewMatrix = uViewTransform * uModelTransform;
-    modelViewMatrix[0][0] = 1;
-    modelViewMatrix[0][1] = 0;
-    modelViewMatrix[0][2] = 0;
-    modelViewMatrix[2][0] = 0;
-    modelViewMatrix[2][1] = 0;
-    modelViewMatrix[2][2] = 1;
+varying vec2 vTexCoord;
 
-    viewSpace = modelViewMatrix * localSpace;
-    clipSpace = uProjection * viewSpace;
-    gl_Position = clipSpace;
+void main() {
 
-    vTexCoord = aTexCoord;
+    vec2 alignmentOffset = uSprite.alignment * uSprite.size;
+    vec2 worldSpace = (aPos * uSprite.size - alignmentOffset) * uSprite.rotationMatrix + uSprite.pos + alignmentOffset;
+    vec2 viewSpace = (worldSpace - uCamera.pos) * uCamera.scale - vec2(1,1);
+
+    gl_Position = vec4(viewSpace, 0.0, 1.0);
+
+    vTexCoord = aTexCoord * uSprite.texScale - uSprite.texOffset;
 }
